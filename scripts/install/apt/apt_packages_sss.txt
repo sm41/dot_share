@@ -1,0 +1,10 @@
+# server
+
+qbittorrent-nox
+curl
+#mpv
+jq
+samba
+#ffmpeg
+fonts-ipafont
+#solaar
