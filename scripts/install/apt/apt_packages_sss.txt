@@ -1,9 +1,8 @@
 # server
 
-qbittorrent-nox
 curl
 #mpv
-jq
+#jq
 samba
 #ffmpeg
 fonts-ipafont
