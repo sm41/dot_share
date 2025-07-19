@@ -8,10 +8,10 @@
 # XDG Base Directory - ArchWiki
 # https://wiki.archlinux.org/title/XDG_Base_Directory
 
+HOSTNAME="${HOSTNAME:-$(hostname)}"
 
 
 function share(){
-
   # XDG
   export  XDG_CACHE_HOME="${HOME}/.cache"
   export XDG_CONFIG_HOME="${HOME}/.config"
@@ -21,7 +21,6 @@ function share(){
 }
 
 function desktop(){
-
   # /mnt
   export  CLIENT_NETWORK_STORAGE_misc="/mnt/samba/misc"
   # export  CLIENT_NETWORK_STORAGE_rec="/mnt/samba/rec"
@@ -47,9 +46,19 @@ function desktop(){
 
 
 function server(){
-
   # /mnt
   export    SERVER_LOCAL_STORAGE_misc="/mnt/local/misc"
   # export    SERVER_LOCAL_STORAGE_rec="/mnt/local/rec"
 
 }
+
+
+
+
+if   [[ ${HOSTNAME} =~ ^*desktop$ ]] ; then
+  desktop
+elif [[ ${HOSTNAME} =~ ^*server$ ]] ; then
+  server
+else
+  :
+fi

@@ -4,17 +4,7 @@ set -eu
 HOSTNAME="${HOSTNAME:-$(hostname)}"
 
 
-if   [[ ${HOSTNAME} =~ ^*desktop$ ]] ; then
-  desktop
-elif [[ ${HOSTNAME} =~ ^*server$ ]] ; then
-  server
-else
-  :
-fi
-
-
 function share(){
-
   # XDG
   mkdir -p "${XDG_CONFIG_HOME}"
   mkdir -p "${XDG_CACHE_HOME}"
@@ -34,7 +24,6 @@ function share(){
 }
 
 function desktop() {
-
   # /home
   mkdir -p "${HOME}/bin/{appimage,bash,python}"
   mkdir -p "${HOME}/repository"
@@ -52,7 +41,6 @@ function desktop() {
 }
 
 function server() {
-
   # /home
   mkdir -p "${HOME}/repository"
 
@@ -65,5 +53,11 @@ function server() {
 
 
 
-
+if   [[ ${HOSTNAME} =~ ^*desktop$ ]] ; then
+  desktop
+elif [[ ${HOSTNAME} =~ ^*server$ ]] ; then
+  server
+else
+  :
+fi
 
